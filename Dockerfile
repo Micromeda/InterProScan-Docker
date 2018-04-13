@@ -1,3 +1,15 @@
+# Created by: Lee Bergstrand 2018
+#
+# Discription:  A Dockerfile for building a container containing InterProScan5. It is based-off the Dockerfile used by
+#               EBI Metagenomics team (https://github.com/EBI-Metagenomics/InterProScan) but has been modified to
+#               provide code and data for all InterProScan5 analyses with the exception of SignalP, Phobius, Tmhmm.
+#               These are exluded as they require licence agreements
+#               (https://github.com/ebi-pf-team/interproscan/wiki/ActivatingLicensedAnalyses).
+#
+# Usage: docker run --rm --name interproscan -v /tmp:/tmp leebergstrand/InterProScan-Docker -dp --goterms --pathways -f tsv
+#                   --appl "PfamA,TIGRFAM,PRINTS,PrositePatterns,Gene3d" -o /tmp/out.ipr -i /tmp/test.fasta
+
+
 FROM openjdk:8
 
 MAINTAINER Lee Bergstrand
@@ -49,6 +61,3 @@ RUN mv rpsblast ./interproscan/bin/blast/ncbi-blast-2.6.0+/
 RUN mv rpsbproc ./interproscan/bin/blast/ncbi-blast-2.6.0+/
 
 ENTRYPOINT ["/bin/bash", "interproscan/interproscan.sh"]
-
-# Example CMD
-# docker run --rm --name interproscan -v /tmp:/tmp olat/interproscan-metagenomics -dp --goterms --pathways -f tsv --appl "PfamA,TIGRFAM,PRINTS,PrositePatterns,Gene3d" -o /tmp/out.ipr -i /tmp/test.fasta
