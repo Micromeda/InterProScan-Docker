@@ -9,8 +9,10 @@ MAX_WORKERS=8
 MIN_WORKERS=6
 JOB_CORES=1
 
-# We found that, imperially, that running two threads per worker and half as many workers was faster than running
-# one job thread per worker and a full number of workers. The code below calculates this.
+# Through empirical analysis, we have found that setting the worker count to 50% of the server's CPU cores and doubling
+# the core count for each tool provides the best wall time for most analyses. In other words, for an 16 core server set
+# ```maxnumber.of.embedded.workers=8``` and each tool to use two threads
+# (i.e. ```hmmer3.hmmsearch.cpu.switch.gene3d=--cpu 2```). The code below calculates this.
 if [ ${NUM_CORES} -eq 1 ]
 then
     MAX_WORKERS=1
@@ -44,8 +46,11 @@ sed -i -E "s/\=\-\-cpu [0-9]+/=\-\-cpu ${JOB_CORES}/g" ${PATH_TO_INTERPROSCAN_PR
 sed -i -E "s/\=\-cpu [0-9]+/=\-cpu ${JOB_CORES}/g" ${PATH_TO_INTERPROSCAN_PROPERTIES}
 sed -i -E "s/\=\-c [0-9]+/=\-c ${JOB_CORES}/g" ${PATH_TO_INTERPROSCAN_PROPERTIES}
 
+echo
+echo "Adjusting interproscan.properties file to take into account that there is ${NUM_CORES} cores."
 echo "Setting max ipr5 workers to ${MAX_WORKERS}."
 echo "Setting starting ipr5 workers to ${MIN_WORKERS}."
 echo "Setting number if CPU cores for jobs to ${JOB_CORES}."
+echo
 
 ./interproscan/interproscan.sh $@
