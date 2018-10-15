@@ -17,7 +17,7 @@ Standard usage would be to use docker's ```-v``` flag to mount host analysis dir
 ```interproscan.sh``` flags into the container.
 
 ```bash
-Usage: docker run --rm --name interproscan -v /tmp:/tmp leebergstrand/InterProScan-Docker -dp --goterms --pathways -f tsv \
+Usage: docker run --rm --name interproscan -v /tmp:/tmp micromeda/interproscan-docker -dp --goterms --pathways -f tsv \
                   --appl "PfamA,TIGRFAM,PRINTS,PrositePatterns,Gene3d" -o /tmp/out.ipr -i /tmp/test.fasta
 ```
 
@@ -26,4 +26,10 @@ Inside the container ```interproscan.sh``` is called making the above equivalent
 ```bash
 interproscan.sh -dp --goterms --pathways -f tsv --appl "PfamA,TIGRFAM,PRINTS,PrositePatterns,Gene3d" -o /tmp/out.ipr \
                 -i /tmp/test.fasta
+```
+
+For convinces we have added ```run_docker_interproscan.sh``` that wraps the above commands.
+
+```bash
+run_docker_interproscan.sh fasta.faa
 ```

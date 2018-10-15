@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -eo pipefail
 
 PATH_TO_INTERPROSCAN_PROPERTIES="./interproscan/interproscan.properties"
 
