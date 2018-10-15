@@ -5,6 +5,12 @@ The Dockerfile is based-off the [one used by EBI Metagenomics team](https://gith
 but it has been modified to enable all InterProScan5 analyses with the exception of SignalP, Phobius, Tmhmm. These are 
 excluded as they [require licence agreements](https://github.com/ebi-pf-team/interproscan/wiki/ActivatingLicensedAnalyses).
 
+### Building:
+
+```bash
+docker build https://raw.githubusercontent.com/Micromeda/InterProScan-Docker/master/Dockerfile -t micromeda/interproscan-docker
+```
+
 ### Usage:
 
 Standard usage would be to use docker's ```-v``` flag to mount host analysis directories and pass the required 
