@@ -60,4 +60,7 @@ RUN wget ftp://ftp.ebi.ac.uk/pub/databases/interpro/iprscan/5/bin/rh6/rpsblast_b
 RUN mv rpsblast ./interproscan/bin/blast/ncbi-blast-2.6.0+/
 RUN mv rpsbproc ./interproscan/bin/blast/ncbi-blast-2.6.0+/
 
-ENTRYPOINT ["/bin/bash", "interproscan/interproscan.sh"]
+ARG github_branch=master
+ADD https://raw.githubusercontent.com/Micromeda/InterProScan-Docker/${github_branch}/run_auto_threaded_interproscan.sh ./interproscan/
+
+ENTRYPOINT ["/bin/bash", "interproscan/run_auto_threaded_interproscan.sh"]
