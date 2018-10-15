@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-PATH_TO_INTERPROSCAN_PROPERTIES="./interproscan.properties"
+PATH_TO_INTERPROSCAN_PROPERTIES="./interproscan/interproscan.properties"
 
 NUM_CORES=$(nproc --all)
 
@@ -47,3 +47,5 @@ sed -i -E "s/\=\-c [0-9]+/=\-c ${JOB_CORES}/g" ${PATH_TO_INTERPROSCAN_PROPERTIES
 echo "Setting max ipr5 workers to ${MAX_WORKERS}."
 echo "Setting starting ipr5 workers to ${MIN_WORKERS}."
 echo "Setting number if CPU cores for jobs to ${JOB_CORES}."
+
+./interproscan/interproscan.sh $@
