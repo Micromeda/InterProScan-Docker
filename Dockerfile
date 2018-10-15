@@ -6,7 +6,9 @@
 #               These are exluded as they require licence agreements
 #               (https://github.com/ebi-pf-team/interproscan/wiki/ActivatingLicensedAnalyses).
 #
-# Usage: docker run --rm --name interproscan -v /tmp:/tmp leebergstrand/InterProScan-Docker -dp --goterms --pathways -f tsv
+# Building: docker build https://raw.githubusercontent.com/Micromeda/InterProScan-Docker/master/Dockerfile -t micromeda/interproscan-docker
+#
+# Usage: docker run --rm --name interproscan -v /tmp:/tmp micromeda/interproscan-docker -dp --goterms --pathways -f tsv
 #                   --appl "PfamA,TIGRFAM,PRINTS,PrositePatterns,Gene3d" -o /tmp/out.ipr -i /tmp/test.fasta
 
 
