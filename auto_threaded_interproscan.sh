@@ -14,7 +14,7 @@ JOB_CORES=1
 # the core count for each tool provides the best wall time for most analyses. In other words, for an 16 core server set
 # ```maxnumber.of.embedded.workers=8``` and each tool to use two threads
 # (i.e. ```hmmer3.hmmsearch.cpu.switch.gene3d=--cpu 2```). The code below calculates this.
-if [ ${NUM_CORES} -eq 1 ]
+if [[ ${NUM_CORES} -eq 1 ]]
 then
     MAX_WORKERS=1
     MIN_WORKERS=1
@@ -24,7 +24,7 @@ else
 
     MAX_WORKERS_DIV=$((${MAX_WORKERS} / 2))
 
-    if [ ${MAX_WORKERS_DIV} -eq 1 ]
+    if [[ ${MAX_WORKERS_DIV} -eq 1 ]]
     then
         JOB_CORES=1
     else
@@ -34,7 +34,7 @@ else
 
     MIN_WORKERS=$((${MAX_WORKERS} / 2))
 
-    if [ ${MIN_WORKERS} -eq 0 ]
+    if [[ ${MIN_WORKERS} -eq 0 ]]
     then
         MIN_WORKERS=1
     fi
