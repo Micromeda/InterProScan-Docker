@@ -42,7 +42,7 @@ fi
 
 # If the environment variable OVERRIDE_IPR_WORKERS is present. Override the
 # number of ipr5 workers. The variable should be in the Docker run command.
-if [[ -v "${OVERRIDE_IPR5_WORKERS}" ]]
+if [[ ! -z ${OVERRIDE_IPR5_WORKERS} ]]
 then
     MAX_WORKERS=${OVERRIDE_IPR5_WORKERS}
     MIN_WORKERS=1
@@ -50,11 +50,10 @@ fi
 
 # If the environment variable OVERRIDE_IPR_CORES is present. Override the
 # number of ipr5 cores. The variable should be set in the Docker run command.
-if [[ -v "${OVERRIDE_IPR5_CORES}" ]]
+if [[ ! -z ${OVERRIDE_IPR5_CORES} ]]
 then
     JOB_CORES=${OVERRIDE_IPR5_CORES}
 fi
-
 
 # We can sed new work and job core counts into the default interproscan.properties file.
 sed -i -E "s/^number\.of\.embedded\.workers\=[0-9]+/number\.of\.embedded\.workers\=${MIN_WORKERS}/g" ${PATH_TO_INTERPROSCAN_PROPERTIES}
