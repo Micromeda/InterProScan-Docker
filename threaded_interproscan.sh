@@ -62,12 +62,13 @@ sed -i -E "s/\=\-\-cpu [0-9]+/=\-\-cpu ${JOB_CORES}/g" ${PATH_TO_INTERPROSCAN_PR
 sed -i -E "s/\=\-cpu [0-9]+/=\-cpu ${JOB_CORES}/g" ${PATH_TO_INTERPROSCAN_PROPERTIES}
 sed -i -E "s/\=\-c [0-9]+/=\-c ${JOB_CORES}/g" ${PATH_TO_INTERPROSCAN_PROPERTIES}
 
-echo
-echo "Adjusting interproscan.properties file to take into account that there is ${NUM_CORES} cores."
+echo # New line
 
-if [[ -v "${OVERRIDE_IPR5_WORKERS}" ]] || [[ -v "${OVERRIDE_IPR5_CORES}" ]]
+if [[ ! -z ${OVERRIDE_IPR5_WORKERS} ]] || [[ ! -z ${OVERRIDE_IPR5_CORES} ]]
 then
     echo "The number of ipr5 workers and/or job cores has been manually overridden."
+else
+    echo "Adjusting interproscan.properties file to take into account that there are ${NUM_CORES} cores."
 fi
 
 echo "Setting max ipr5 workers to ${MAX_WORKERS}."

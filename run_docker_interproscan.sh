@@ -3,6 +3,7 @@
 # Production scrip includes --rm to remove container when done.
 
 echo "Running InterProScan on $1."
+echo
 
 # Check if the number of works and cores per job has been specified.
 if [[ $2 -eq 0 ]] || [[ $3 -eq 0 ]]
