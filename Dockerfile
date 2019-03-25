@@ -63,6 +63,6 @@ RUN mv rpsblast ./interproscan/bin/blast/ncbi-blast-2.6.0+/
 RUN mv rpsbproc ./interproscan/bin/blast/ncbi-blast-2.6.0+/
 
 ARG github_branch=master
-ADD https://raw.githubusercontent.com/Micromeda/InterProScan-Docker/${github_branch}/run_auto_threaded_interproscan.sh ./interproscan/
+ADD https://raw.githubusercontent.com/Micromeda/InterProScan-Docker/${github_branch}/threaded_interproscan.sh ./interproscan/
 
-ENTRYPOINT ["/bin/bash", "interproscan/run_auto_threaded_interproscan.sh"]
+ENTRYPOINT ["/bin/bash", "interproscan/threaded_interproscan.sh"]
