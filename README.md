@@ -28,8 +28,15 @@ interproscan.sh -dp --goterms --pathways -f tsv --appl "PfamA,TIGRFAM,PRINTS,Pro
                 -i /tmp/test.fasta
 ```
 
-For convinces we have added ```run_docker_interproscan.sh``` that wraps the above commands.
+For convenience we have added ```run_docker_interproscan.sh``` that wraps the above commands.
 
 ```bash
 run_docker_interproscan.sh fasta.faa
+```
+
+If you can also to manually specify the number of workers and threads per job.
+
+```bash
+# run_docker_interproscan.sh <FASTA> [NUMBER OF WORKERS] [NUMBER OF THREADS PER JOB]
+run_docker_interproscan.sh fasta.faa 8 2
 ```
