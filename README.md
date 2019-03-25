@@ -28,13 +28,13 @@ interproscan.sh -dp --goterms --pathways -f tsv --appl "PfamA,TIGRFAM,PRINTS,Pro
                 -i /tmp/test.fasta
 ```
 
-For convenience we have added [```run_docker_interproscan.sh```](https://github.com/Micromeda/InterProScan-Docker/blob/master/run_docker_interproscan.sh) that wraps the above commands.
+For convenience we have added [```run_docker_interproscan.sh```](https://github.com/Micromeda/InterProScan-Docker/blob/master/run_docker_interproscan.sh) that wraps the above commands. By default, this script will automatically set the number of number of workers and threads per job.
 
 ```bash
 run_docker_interproscan.sh fasta.faa
 ```
 
-If you can also to manually specify the number of workers and threads per job.
+You can also to manually specify the number of workers and threads per job.
 
 ```bash
 # run_docker_interproscan.sh <FASTA> [NUMBER OF WORKERS] [NUMBER OF THREADS PER JOB]
