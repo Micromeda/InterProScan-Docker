@@ -28,7 +28,7 @@ interproscan.sh -dp --goterms --pathways -f tsv --appl "PfamA,TIGRFAM,PRINTS,Pro
                 -i /tmp/test.fasta
 ```
 
-For convenience we have added ```run_docker_interproscan.sh``` that wraps the above commands.
+For convenience we have added [```run_docker_interproscan.sh```](https://github.com/Micromeda/InterProScan-Docker/blob/master/run_docker_interproscan.sh) that wraps the above commands.
 
 ```bash
 run_docker_interproscan.sh fasta.faa
