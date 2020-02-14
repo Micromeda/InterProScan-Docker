@@ -2,7 +2,7 @@
 
 # Production scrip includes --rm to remove container when done.
 
-ANALYSIS_PATH=$(dirname "$1") # The path of the directory where the analysis will take place
+ANALYSIS_PATH="$(cd "$(dirname "$1")" || exit; pwd)" # The absolute path of the directory where the input file is
 FILENAME=$(basename "$1") # The FASTA file name in the above directory that will be scanned by InterProScan
 FILENAME_NO_EXTENSION=$(echo "$FILENAME" | cut -d'.' -f1) # The above file name with .faa or .fasta removed
 WORKER_COUNT=$2 # The number of workers for IPR5 to use
