@@ -51,8 +51,8 @@ RUN tar -pxvzf panther-data-12.0.tar.gz -C /opt/interproscan/data
 
 RUN rm -f panther-data-12.0.tar.gz panther-data-12.0.tar.gz.md5
 
-# The packaged rpsblast needs libgomp1.
-RUN apt-get update && apt-get -y install libgomp1 && rm -rf /var/lib/apt/lists/*
+# The packaged rpsblast needs libgomp1. Install Python3 to support IPR5 code.
+RUN apt-get update && apt-get -y install libgomp1 python-is-python3 && rm -rf /var/lib/apt/lists/*
 
 # The rpsblast packaged with this InterProScan5 release was compiled pointing to 
 # the libgnutls28 DLL, this container has the libgnutls30 DLL causing a runtime error.
