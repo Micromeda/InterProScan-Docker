@@ -17,13 +17,13 @@ then
     # Else, let the shell script inside docker auto-thread the workers and jobs in the container.
     echo "The number of workers and threads per job has not been manually specified. Selecting these automatically..."
     docker run --rm --name interproscan -v "$ANALYSIS_PATH":/run micromeda/interproscan-docker -dp --goterms \
-    --pathways --appl "Pfam,PIRSF,PANTHER,SMART,TIGRFAM,CDD" -f tsv -o /run/"$FILENAME_NO_EXTENSION".tsv \
+    --pathways -f tsv -o /run/"$FILENAME_NO_EXTENSION".tsv \
     -i /run/"$FILENAME"
 else
     # If so, transfer these into container environment variables.
     echo "User has manually specified $WORKER_COUNT workers and $JOB_THREAD_COUNT threads per job."
     docker run --rm --name interproscan --env OVERRIDE_IPR5_WORKERS="$WORKER_COUNT" --env \
     OVERRIDE_IPR5_CORES="$JOB_THREAD_COUNT" -v "$ANALYSIS_PATH":/run micromeda/interproscan-docker -dp --goterms \
-    --pathways --appl "Pfam,PIRSF,PANTHER,SMART,TIGRFAM,CDD" -f tsv -o /run/"$FILENAME_NO_EXTENSION".tsv \
+    --pathways -f tsv -o /run/"$FILENAME_NO_EXTENSION".tsv \
     -i /run/"$FILENAME"
 fi
